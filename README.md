@@ -13,18 +13,16 @@ A serverless API built with NestJS for managing user notification preferences an
 ## Setup Instructions
 1. Clone the repository.
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
 3. Create a `.env` file and configure your MongoDB URI.
-4. Run the application locally:
-   ```bash
-   npm run start
-   ```
+
 
 ## Deployment
-1. Deploy to Vercel or any serverless platform.
+1. Deployed to Vercel platform.
+   https://notification-preferences-api-final-v.vercel.app/
+
 2. Use the provided `MONGODB_URI` environment variable for database connection.
+   MONGODB_URI=mongodb+srv://Meghana675:Marri@123@cluster0.3ob55.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 
 ## API Documentation
 Refer to the `/api` route for Swagger documentation.
