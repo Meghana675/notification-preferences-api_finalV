@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Notification Preferences API
+  description: API for managing user notification preferences and sending notifications.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+  - url: https://{your-vercel-project-name}.vercel.app/api
+paths:
+  /preferences:
+    post:
+      summary: Create a new user preference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePreferenceDto'
+      responses:
+        '201':
+          description: Preference created successfully
+  /preferences/{userId}:
+    get:
+      summary: Get preferences for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User preferences retrieved
+    patch:
+      summary: Update preferences for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePreferenceDto'
+      responses:
+        '200':
+          description: Preferences updated successfully
+    delete:
+      summary: Delete preferences for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Preferences deleted successfully
+components:
+  schemas:
+    CreatePreferenceDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+        preferences:
+          type: object
+          properties:
+            marketing:
+              type: boolean
+            newsletter:
+              type: boolean
+            updates:
+              type: boolean
+            frequency:
+              type: string
+              enum: [daily, weekly, monthly, never]
+            channels:
+              type: object
+              properties:
+                email:
+                  type: boolean
+                sms:
+                  type: boolean
+                push:
+                  type: boolean
+        timezone:
+          type: string
